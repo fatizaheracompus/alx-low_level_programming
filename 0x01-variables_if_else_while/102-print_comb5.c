@@ -1,9 +1,9 @@
 #include <stdio.h>
-
 /**
- * main _ main function
+ * main - prints all possible combinations of a pair of
+ * two digit numbers,withou any repitition.
  *
- * Return: always 0
+ * Return: 0 on success
  */
 
 int main(void)

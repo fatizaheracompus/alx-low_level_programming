@@ -4,7 +4,7 @@
 /**
  * *malloc_checked - array for prints string
  * @b: number of memory
- * Return: a pointer to the allocate memory
+ * Return: a pointer to the allocate memor:y
  */
 void *malloc_checked(unsigned int b)
 {

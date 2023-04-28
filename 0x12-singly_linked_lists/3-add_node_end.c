@@ -26,17 +26,18 @@ newn->len = n;
 newn->next = NULL;
 curn = *head;
 
-if (*head == NULL)
+if (curn == NULL)
 {
 *head = newn;
-return (newn);
+
 }
+	else
+{
 
 while (curn->next != NULL)
 curn = curn->next;
-
 curn->next = newn;
-
+}
 return (*head);
 }
 

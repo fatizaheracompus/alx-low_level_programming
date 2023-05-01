@@ -3,6 +3,16 @@
 #include <stdarg.h>
 #include <stdio.h>
 
+/**
+ * struct print - struct print
+ * @print: format print
+ * @f: the function associated
+ */
+typedef struct print
+{
+	char *print;
+	void (*f)(char *, va_list);
+} print_t;
 
 int sum_them_all(const unsigned int n, ...);
 void print_numbers(const char *separator, const unsigned int n, ...);

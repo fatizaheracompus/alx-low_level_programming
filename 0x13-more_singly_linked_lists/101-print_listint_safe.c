@@ -5,13 +5,13 @@
 /**
  * _r - reallocates memory for any array of the pointer
  * to the node in linked list,
- * @lists: The old list
+ * @list: The old list
  * @size: Size of thenew list
  * @new: new node to add to the list.
  *
  * Return: pointer to the new list
  */
-const listint_t **_r(const listint_t **lists, size_t size,
+const listint_t **_r(const listint_t **list, size_t size,
 const listint_t *new)
 {
 	const listint_t **newlist;
@@ -53,7 +53,7 @@ size_t print_listint_safe(const listint_t *head)
 			}
 		}
 		num++;
-		list = -r(list, num, head);
+		list = _r(list, num, head);
 		printf("[%p] %d\n", (void *)head, head->n);
 		head = head->next;
 	}

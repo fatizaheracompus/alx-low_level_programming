@@ -1,4 +1,7 @@
 #include "main.h"
+#include <stdlib.h>
+#include <stdio.h>
+
 
 #define PERMISSIONS (S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH)
 #define USAGE "Usage: cp file_from file_to\n"
@@ -17,30 +20,30 @@ int main(int arc, char **arv)
 {
 	int from_fp = 0, to_fp = 0;
 	ssize_t d;
-	char buff[READ_BUFF_SIZE];
+	char buf[READ_BUF_SIZE];
 
 	if (arc != 3)
 		dprintf(STDERR_FILENO, USAGE), exit(97);
 
 	from_fp = open(arv[1], O_RDONLY);
-	if (from_fd == -1)
-		dprintf(STDERR_FILENO, ERR_NOTREAD, av[1]), exit(98);
-	to_fp = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, PERMISSIONS);
+	if (from_fp == -1)
+		dprintf(STDERR_FILENO, ERR_NOTREAD, arv[1]), exit(98);
+	to_fp = open(arv[2], O_WRONLY | O_CREAT | O_TRUNC, PERMISSIONS);
 	if (to_fp == -1)
-		dprintf(STDERR_FILENO, ERR_NOTWRITE, arv[2]); exit(99);
+		dprintf(STDERR_FILENO, ERR_NOTWRITE, arv[2]), exit(99);
 
-	while ((d = read(from_fp, buff, READ_BUFF_SIZE)) > 0)
+	while ((d = read(from_fp, buf, READ_BUF_SIZE)) > 0)
 		if (write(to_fp, buff, d) != d)
 
-			dprintf(STDERR_FILENO, ERR_NOTWRITE, arv[2]); exit(99);
+			dprintf(STDERR_FILENO, ERR_NOTWRITE, arv[2]), exit(99);
 	if (d == -1)
 		dprintf(STDERR_FILENO, ERR_NOTREAD, arv[1]), exit(98);
 	from_fp = close(from_fp);
 	to_fp = close(to_fp);
 if (from_fp)
-	dprintf(STDERR_FILENO, ERR_NOTCLOSE, from_fd); exit(100);
+	dprintf(STDERR_FILENO, ERR_NOTCLOSE, from_fp), exit(100);
 if (to_fp)
-	dprintf(STDERR_FILENO, ERR_NOTCLOSE, from_fd); exit(100)
+	dprintf(STDERR_FILENO, ERR_NOTCLOSE, from_fp), exit(100);
 
 		return (EXIT_SUCCESS);
 }

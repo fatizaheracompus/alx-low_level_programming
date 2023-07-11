@@ -32,7 +32,7 @@ ssize_t byte = 0;
 int fc;
 ssize_t len = _strlen(text_content);
 
-if (filename == NULL)
+if (!filename)
 return (-1);
 fc = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
 if (fc == -1)

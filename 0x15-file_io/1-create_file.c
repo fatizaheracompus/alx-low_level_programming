@@ -43,5 +43,5 @@ if (len)
 	byte = write(fc, text_content, len);
 close(fc);
 
-return (len = byte);
+return (len = byte ? 1 : -1);
 }
